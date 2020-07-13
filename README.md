@@ -1,2 +1,2 @@
-# netty-coureses
-netty-coureses
+# netty-courses
+netty-courses

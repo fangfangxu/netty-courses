@@ -5,7 +5,7 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-
+//服务器启动类
 public class SomeServer {
     public static void main(String[] args) throws InterruptedException {
         //用于处理客户端连接请求，将请求发送给childGroup中的eventLoop
@@ -18,7 +18,7 @@ public class SomeServer {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(parentGroup, childGroup)//指定eventLoopGroup
                     .channel(NioServerSocketChannel.class)//指定使用NIO进行通信
-                    .childHandler(null);//指定childGroup中的eventLoop所绑定的线程所要处理的处理器
+                    .childHandler(new SomeChannelInitializer());//指定childGroup中的eventLoop所绑定的线程所要处理的处理器
             //指定当前服务器所监听的端口号
             //bind()方法的执行是异步的
             //sync()方法会使bind（）操作与后续的代码的执行由异步变成同步
